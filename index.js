@@ -10,9 +10,10 @@ const makeGraph = set => {
       return a.start > b.start;
     })
     .map((x, i) => {
-      const project = Object.assign({}, x, {
+      const project = {
+        ...x,
         neighbors: [set[i - 1], set[i + 1]]
-      });
+      };
 
       return projectFactory(project);
     });
