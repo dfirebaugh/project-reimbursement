@@ -1,7 +1,7 @@
 const { date_diff_indays } = require("./date");
 
 const projectFactory = ({ cost, start, end, neighbors }) => {
-  return {
+  const project = {
     start: start,
     end: end,
     rate: cost === "high" ? 85 : 75,
@@ -15,6 +15,13 @@ const projectFactory = ({ cost, start, end, neighbors }) => {
         offset: date_diff_indays(end, neighbors[1].start),
         ...neighbors[1]
       }
+    }
+  };
+  return {
+    ...project,
+    reimbursement: () => {
+      const days = date_diff_indays(start, end);
+      return project.rate * days;
     }
   };
 };
