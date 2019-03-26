@@ -1,4 +1,5 @@
 const { projectFactory } = require("./project");
+const { logger } = require("./logger");
 
 const makeGraph = set => {
   const setWithNeighbors = set
@@ -20,7 +21,10 @@ const makeGraph = set => {
 };
 
 const getReimbursement = graph => {
-  return graph.reduce((acc, curr) => acc + curr);
+  logger(graph);
+  return graph
+    .map(x => x.full * x.fullRate + x.travel * x.travelRate)
+    .reduce((acc, curr) => acc + curr);
 };
 
 module.exports = {
