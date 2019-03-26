@@ -18,7 +18,10 @@ const makeGraph = set => {
       return projectFactory(project);
     });
   console.log(setWithNeighbors.map(x => x.neighbors));
-  console.log(setWithNeighbors.map(x => x.reimbursement()));
+  console.log(
+    setWithNeighbors.map(x => x.reimbursement())
+    // .reduce((acc, curr) => acc + curr)
+  );
 };
 
-makeGraph(set2);
+makeGraph(set3);

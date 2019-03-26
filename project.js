@@ -20,8 +20,39 @@ const projectFactory = ({ cost, start, end, neighbors }) => {
   return {
     ...project,
     reimbursement: () => {
-      const days = date_diff_indays(start, end);
-      return project.rate * days;
+      const { prev, next } = project.neighbors;
+      let days = date_diff_indays(start, end);
+      let travelDays = 0;
+
+      if (!prev || prev.offset > 0) {
+        travelDays++;
+        days > 0 && days--;
+      }
+
+      if (!prev || prev.offset > 0) {
+        travelDays++;
+        days > 0 && days--;
+      }
+
+      // TODO--handle overlap
+      if (prev && prev.offset < 0 && prev.cost === "high") {
+      }
+
+      if (next && next.offset < 0 && next.cost === "high") {
+      }
+      console.log(
+        "\n-------------------\n",
+        "projectRate: ",
+        project.rate,
+        "\nstandard work days: ",
+        days,
+        "\ntravelRate: ",
+        project.travelRate,
+        "\ntravelDays: ",
+        travelDays,
+        "\n-------------------\n"
+      );
+      return project.rate * days + project.travelRate * travelDays;
     }
   };
 };
