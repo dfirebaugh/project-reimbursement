@@ -1,0 +1,14 @@
+{
+  "name": "project-reimbursement",
+  "version": "1.0.0",
+  "description": "Technical Exercise:",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Dustin Firebaugh <dafirebaugh@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^24.5.0"
+  }
+}

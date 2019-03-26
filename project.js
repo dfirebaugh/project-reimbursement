@@ -1,4 +1,5 @@
 const { date_diff_indays } = require("./date");
+const { logger } = require("./logger");
 
 const projectFactory = ({ cost, start, end, neighbors }) => {
   const project = {
@@ -40,7 +41,7 @@ const projectFactory = ({ cost, start, end, neighbors }) => {
 
       if (next && next.offset < 0 && next.cost === "high") {
       }
-      console.log(
+      logger(
         "\n-------------------\n",
         "projectRate: ",
         project.rate,
